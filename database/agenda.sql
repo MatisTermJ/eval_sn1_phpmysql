@@ -105,3 +105,14 @@ INSERT INTO `event` (`id`, `title`, `date`, `information`, `category`, `places`,
 -- ------------------------------------------------------------
 --  Table `reservation` : À CRÉER PAR VOUS (voir le README)
 -- ------------------------------------------------------------
+DROP TABLE IF EXISTS `reservation`;
+CREATE TABLE IF NOT EXISTS `reservation` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL,
+  `event_id` int NOT NULL,
+  `created_at` timestamp NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_reservation_client` (`user_id`),
+  KEY `fk_reservation_event` (`event_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+COMMIT;

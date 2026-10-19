@@ -1,0 +1,27 @@
+<?php foreach ($events as $event){ ?>
+        <li class="event-card cat-<?= htmlspecialchars($event['category']) ?>">
+            <div class="event-media">
+                <img class="event-image"
+                     src="<?= htmlspecialchars($event['image'] ?? '') ?>"
+                     alt="">
+                <span class="badge">
+                    <?= htmlspecialchars(ucfirst($event['category'])) ?>
+                </span>
+                <?php $timestamp = strtotime($event['date']); ?>
+                    <div class="event-date">
+                        <span class="day"><?= date('d', $timestamp) ?></span>
+                        <span class="month"><?= date('M', $timestamp) ?></span>
+                    </div>
+            </div>
+
+            <h3 class="event-title">
+                <a href="evenement.php?id=<?= (int) $event['id'] ?>">
+                    <?= htmlspecialchars($event['title']) ?>
+                </a>
+            </h3>
+
+            <span class="muted">
+                <?= date('d/m/Y à H\hi', strtotime($event['date'])) ?>
+            </span>
+        </li>
+    <?php }?>
